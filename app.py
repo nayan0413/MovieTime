@@ -2,9 +2,10 @@ import streamlit as st
 import pandas as pd
 import pickle
 import requests
+import creds
 
 def get_poster(movie_id):
-    response = requests.get('https://api.themoviedb.org/3/movie/{}?api_key=2aca2398b4101dbc6a0d7cb288da6f0d&language=en-US'.format(movie_id))
+    response = requests.get('https://api.themoviedb.org/3/movie/{}?api_key={}&language=en-US'.format(movie_id, creds.key))
     data = response.json()
     return "https://image.tmdb.org/t/p/w500" + data['poster_path']
 
